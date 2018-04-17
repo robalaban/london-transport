@@ -20,7 +20,7 @@ const requestGetTfl = () =>
 function* getTfl() {
   const { response, error } = yield call(requestGetTfl)
   if (response) {
-    yield put(fetchTflSuccess(response))
+    yield put(fetchTflSuccess(response.data))
   } else yield put(fetchTflError(error))
 }
 
@@ -28,14 +28,14 @@ export function* tflWatcher() {
   yield takeEvery(FETCH_TFL, getTfl)
 }
 
-const requestGetBikePoints = value =>
+const requestGetBikePoints = value => () =>
   axios
-    .get(`${BASE_URL}BikePoint/Search?query=${value}/`)
+    .get(`${BASE_URL}BikePoint/Search?query=${value.value}`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
 
-function* getBikePoints() {
-  const { response, error } = yield call(requestGetBikePoints)
+function* getBikePoints(value) {
+  const { response, error } = yield call(requestGetBikePoints(value))
   if (response) {
     yield put(fetchBikePointsSuccess(response))
   } else yield put(fetchBikePointsError(error))

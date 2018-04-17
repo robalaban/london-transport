@@ -7,7 +7,9 @@ class Transport extends Component {
   render() {
     return (
       <div className="transport">
-        <Header className="transport--header">Medium Header</Header>
+        <Header className="transport--header">
+          React and Redux London Transport
+        </Header>
         <Navigation className="transport--navigation" />
       </div>
     )

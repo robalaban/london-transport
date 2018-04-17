@@ -1,4 +1,7 @@
 .ui.container {
-  display: flex;
   margin: 2.4rem 0 0;
+}
+
+.nightly--icon {
+  padding-left: 0.75rem;
 }
