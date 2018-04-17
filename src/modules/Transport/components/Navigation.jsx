@@ -1,5 +1,9 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
+import PropsTypes from "prop-types"
+import { bindActionCreators, compose } from "redux"
 import { Container } from "semantic-ui-react"
+import { fetchTfl } from "../actions"
 import Detail from "./Detail"
 import "./navigation.css"
 
@@ -7,16 +11,21 @@ const Item = ({ ...props }) => (
   <div onClick={() => props.onClick(props.name)}>{`${props.name}`}</div>
 )
 
+const mapStateToProps = state => ({ transport: state.transport })
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ fetchTfl }, dispatch)
+
+@connect(mapStateToProps, mapDispatchToProps)
+@loader({ name: "transport", descriptor: "items" })
 class Navigation extends Component {
   state = { activeItem: "home" }
 
   handleItemClick = name => {
-    this.setState({ activeItem: name }, () => console.log(this.state))
+    this.setState({ activeItem: name })
   }
 
   render() {
     const { activeItem } = this.state
-    console.log(this.state)
     return (
       <Container className="container">
         <ul>

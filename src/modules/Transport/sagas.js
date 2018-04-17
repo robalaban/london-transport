@@ -13,7 +13,7 @@ import {
 
 const requestGetTfl = () =>
   axios
-    .get(BASE_URL + "as/")
+    .get(`${BASE_URL}Line/Mode/tube,overground,dlr/Status?detail=true`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
 
@@ -30,7 +30,7 @@ export function* tflWatcher() {
 
 const requestGetBikePoints = value =>
   axios
-    .get(`${BASE_URL}asdf/${value}`)
+    .get(`${BASE_URL}BikePoint/Search?query=${value}/`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
 

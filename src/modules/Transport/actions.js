@@ -11,7 +11,7 @@ export const FETCH_TFL_FAIL = "FETCH_TFL_FAIL"
 export const fetchTflError = error => ({ type: FETCH_TFL_FAIL, error })
 
 export const FETCH_BIKEPOINTS = "FETCH_BIKEPOINTS"
-export const fetchBikePoints = id => ({ type: FETCH_BIKEPOINTS, id })
+export const fetchBikePoints = value => ({ type: FETCH_BIKEPOINTS, value })
 
 export const FETCH_BIKEPOINTS_SUCCESS = "FETCH_BIKEPOINTS_SUCCESS"
 export const fetchBikePointsSuccess = response => ({
